@@ -10,7 +10,7 @@ export default async function convertFile (filePath, options) {
   const content = await fs.readFile(filePath)
   const converted = await convertSVG(content, options)
 
-  const fileName = fs.finalFileName(filePath)
+  const fileName = fs.finalFileName(filePath, options.filePrefix)
   const finalFilePath = path.resolve(options.outputDir, fileName)
 
   await fs.writeFile(finalFilePath, converted)

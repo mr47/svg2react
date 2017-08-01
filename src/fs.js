@@ -19,10 +19,14 @@ export function writeFile (path, content) {
   })
 }
 
-export function finalFileName (filePath) {
+export function finalFileName (filePath, filePrefix) {
   let final = filePath.substr(filePath.lastIndexOf('/') + 1)
   final = final.replace(/\.svg$/, '')
-  final = `${final}.js`
+  if (filePrefix) {
+    final = `${final}.${filePrefix}`
+  } else {
+    final = `${final}.js`
+  }
   return final
 }
 
