@@ -16,7 +16,7 @@ program
   .option('-d, --output-dir [dir]', 'Output directory')
   .option('-q, --quotes', 'Use double quotes instead of simple quotes for surround attributes')
   .option('-p, --prefix', 'Result file name prefix')
-  .option('-f, --files', 'Input files')
+  .option('-f, --files <items>', 'Input files')
   .parse(process.argv)
 
 if (!program.args.length) {
@@ -25,8 +25,10 @@ if (!program.args.length) {
 }
 let files = [];
 
-if (program.files && program.files.length > 0){
+if (Array.isArray(program.files)){
   files = program.files
+} else if ( typeof program.files === 'string' ) {
+  files = [program.files];
 } else {
   files = program.args
 }
