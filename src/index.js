@@ -15,7 +15,7 @@ program
   .usage('[options] <file> [otherFiles...]')
   .option('-d, --output-dir [dir]', 'Output directory')
   .option('-q, --quotes', 'Use double quotes instead of simple quotes for surround attributes')
-  .option('-p, --prefix', 'Result file name prefix')
+  .option('-p, --prefix <items>', 'Result file name prefix')
   .option('-f, --files <items>', 'Input files')
   .parse(process.argv)
 
