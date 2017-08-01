@@ -16,14 +16,21 @@ program
   .option('-d, --output-dir [dir]', 'Output directory')
   .option('-q, --quotes', 'Use double quotes instead of simple quotes for surround attributes')
   .option('-p, --prefix', 'Result file name prefix')
+  .option('-f, --files', 'Input files')
   .parse(process.argv)
 
 if (!program.args.length) {
   console.log('No file specified.') // eslint-disable-line no-console
   process.exit(1)
 }
+let files = [];
 
-let files = program.args
+if (program.files && program.files.length > 0){
+  files = program.files
+} else {
+  files = program.args
+}
+
 const options = buildOptions(program)
 
 if (files.length === 1 && !fs.existsSync(files[0])) {
